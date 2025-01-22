@@ -33,6 +33,28 @@
 		}
 
 		[TestMethod]
+		[DataRow(1)]
+		[DataRow(100)]
+		[DataRow(74)]
+		public void IsPlayerValueBetween1And100_WithValueBetween1And100_ReturnsTrue(int value)
+		{
+			var result = _game.IsPlayerValueBetween1And100(value);
+
+			Assert.IsTrue(result);
+		}
+
+		[TestMethod]
+		[DataRow(0)]
+		[DataRow(101)]
+		[DataRow(740)]
+		public void IsPlayerValueBetween1And100_WithValueNotBetween1And100_ReturnsTrue(int value)
+		{
+			var result = _game.IsPlayerValueBetween1And100(value);
+
+			Assert.IsFalse(result);
+		}
+
+		[TestMethod]
 		[DataRow("1", 1)]
 		[DataRow("7", 7)]
 		public void ConvertPlayerValueToInt_WithStringValue_ReturnsInt(string value, int expectedResult)
